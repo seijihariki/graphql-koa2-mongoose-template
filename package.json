@@ -1,0 +1,38 @@
+{
+  "name": "graphql-koa2-mongoose",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "repository": "git@gitlab.com:seijihariki-templates/graphql-koa2-mongoose.git",
+  "author": "Victor Seiji Hariki <victorseijih+libs@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon ./src/server.js --exec babel-node --signal SIGTERM",
+    "lint": "eslint --ext .js --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "apollo-server-koa": "^2.2.3",
+    "asynciterator": "^2.0.1",
+    "graphql": "^14.0.2",
+    "graphql-upload": "^8.0.2",
+    "koa2": "^2.0.0-alpha.7",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "docker-nodemon": "^1.11.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-import-resolver-babel-module": "^4.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-module-resolver": "^0.8.0",
+    "nodemon": "^1.18.7"
+  }
+}
