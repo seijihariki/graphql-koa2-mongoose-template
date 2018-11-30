@@ -10,6 +10,7 @@
     "watch:build": "babel src --out-dir lib --source-maps --watch --copy-files",
     "watch:run": "nodemon lib/server.js",
     "watch": "npm run watch:build & (sleep 1 && npm run watch:run)",
+    "clean": "rm -rf node_modules/ *.log lib/ dist/",
     "lint": "eslint --ext .js --ignore-path .gitignore",
     "prebuild": "rm -rf dist",
     "build": "babel src/ -Dd dist/",
