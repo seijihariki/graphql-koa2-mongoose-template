@@ -4,6 +4,8 @@ import { ApolloServer, gql } from 'apollo-server-koa';
 import db from './db/index';
 import logger from './util/logging';
 
+logger.info(`Started server with PID ${process.pid}`);
+
 // Retrieve environment values
 const port = process.env.PORT || 3000;
 
@@ -25,16 +27,21 @@ server.installSubscriptionHandlers(httpServer);
 
 // Handle signals
 const exitOnSignal = (signal) => {
-  logger.info(`Received '${signal}'!`);
+  logger.info(`Server with PID ${process.pid} received '${signal}'!`);
   logger.info('⏻ Shutting server down...');
   httpServer.close();
   process.exit();
 };
 
-process.on('exit', () => exitOnSignal('exit'));
+try {
+  process.on('exit', () => exitOnSignal('exit'));
+  process.on('SIGTERM', () => exitOnSignal('SIGTERM'));
+} catch (e) {
+  logger.warn(`Failed to setup signal handlers: "${e}"`);
+}
 
 // Start listening
-app.listen({ port }, () => {
+app.listen(port, () => {
   logger.info(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`);
   logger.info(`🚀 Subscriptions ready at ws://localhost:${port}${server.graphqlPath}`);
 });

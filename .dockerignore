@@ -1,4 +1,15 @@
+# Git
+.git
+.cache
+.gitignore
+
+# Config files
+.dockerignore
 .DS_Store
+
+# Docker files
+Dockerfile
+docker-compose.yml
 
 # Node packages
 node_modules/
