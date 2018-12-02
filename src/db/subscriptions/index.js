@@ -16,7 +16,7 @@ gqlSubscriptionTypeFiles.forEach((filename) => {
   logger.info(`Loading GraphQL Subscription file: ${filename}`);
   try {
     const content = fs.readFileSync(path.join(subscriptionTypeDir, filename));
-    gqlSubscriptionTypes += content;
+    gqlSubscriptionTypes += `${content}\n`;
   } catch (e) {
     logger.error(e);
   }

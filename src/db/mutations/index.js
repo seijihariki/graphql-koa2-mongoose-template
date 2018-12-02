@@ -16,7 +16,7 @@ gqlInputTypeFiles.forEach((filename) => {
   logger.info(`Loading GraphQL Input file: ${filename}`);
   try {
     const content = fs.readFileSync(path.join(inputTypeDir, filename));
-    gqlInputTypes += content;
+    gqlInputTypes += `${content}\n`;
   } catch (e) {
     logger.error(e);
   }
@@ -35,7 +35,7 @@ gqlMutationTypeFiles.forEach((filename) => {
   logger.info(`Loading GraphQL Mutation file: ${filename}`);
   try {
     const content = fs.readFileSync(path.join(mutationTypeDir, filename));
-    gqlMutationTypes += content;
+    gqlMutationTypes += `${content}\n`;
   } catch (e) {
     logger.error(e);
   }

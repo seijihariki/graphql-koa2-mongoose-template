@@ -16,7 +16,7 @@ gqlQueryTypeFiles.forEach((filename) => {
   logger.info(`Loading GraphQL Query file: ${filename}`);
   try {
     const content = fs.readFileSync(path.join(queryTypeDir, filename));
-    gqlQueryTypes += content;
+    gqlQueryTypes += `${content}\n`;
   } catch (e) {
     logger.error(e);
   }
