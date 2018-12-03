@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "watch:build": "babel src --out-dir lib --source-maps --watch --copy-files",
+    "watch:build": "babel src --out-dir lib --source-maps --watch --copy-files --delete-dir-on-start",
     "watch:run": "nodemon lib/server.js",
     "watch": "npm run watch:build & (sleep 1 && npm run watch:run)",
     "clean": "rm -rf node_modules/ *.log lib/ dist/",
