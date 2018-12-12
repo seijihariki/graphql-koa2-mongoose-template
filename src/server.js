@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import Koa from 'koa2';
 import http from 'http';
 import { ApolloServer, gql } from 'apollo-server-koa';
