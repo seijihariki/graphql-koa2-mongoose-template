@@ -1,5 +1,5 @@
-import textMutation from './text';
+import textQuery from './text';
 
 export default {
-  ...textMutation,
+  ...textQuery,
 };
