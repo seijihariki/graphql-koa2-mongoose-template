@@ -1,0 +1,27 @@
+enum CompanyType {
+  HOSPITAL
+  TRANSPORT
+}
+
+input CompanyInput {
+  legalName: String
+  tradeName: String
+  companyType: CompanyType
+}
+
+type Company implements Record {
+  # Record
+  id: ID!
+
+  createdAt: Datetime!
+  updatedAt: Datetime!
+
+  createdBy: User
+  updatedBy: User
+
+  # Data
+  legalName: String!
+  tradeName: String
+  companyType: CompanyType
+  ambulances: [Ambulance!]
+}

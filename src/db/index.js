@@ -1,4 +1,4 @@
-import { modelSchema, mongoModels } from './model';
+import { modelSchema, typeResolvers, models } from './model';
 import { mutationSchema, mutationResolvers } from './mutations';
 import { querySchema, queryResolvers } from './queries';
 import { subscriptionSchema, subscriptionResolvers } from './subscriptions';
@@ -16,14 +16,10 @@ ${subscriptionSchema}
   .trim(); // Remove leading and trailing white space
 
 /**
- * Setup models
- */
-const models = mongoModels;
-
-/**
  * Merge resolvers
  */
 const resolvers = {
+  ...typeResolvers,
   ...mutationResolvers,
   ...queryResolvers,
   ...subscriptionResolvers,

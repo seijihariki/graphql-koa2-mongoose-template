@@ -1,5 +1,5 @@
-import textMutation from './text';
+import personQuery from './person';
 
 export default {
-  ...textMutation,
+  ...personQuery,
 };

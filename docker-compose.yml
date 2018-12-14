@@ -4,21 +4,43 @@ version: "3.5"
 services:
   mongodb:
     image: mongo
+    hostname: mongodb
     restart: always
+    volumes:
+      - "mongodb_persistence:/data/db"
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
+      MONGO_INITDB_DATABASE: ${NODE_ENV}
+
+  mongoclient:
+    image: adicom/admin-mongo
+    hostname: mongoclient
+    restart: always
+    ports:
+      - "${ADMIN_MONGO_PORT:-3001}:1234"
+    volumes:
+      - "mongoclient_persistence:/data/db"
+    environment:
+      DB_HOST: mongodb
+    depends_on:
+      - mongodb
 
   api:
     build:
       context: .
       target: development
     command: npm run watch
+    hostname: api
     ports:
       - "${API_PORT:-3000}:3000"
     volumes:
-      - ".:${INSTALL_PATH:-/usr/src/api}"
+      - "./src:${INSTALL_PATH:-/usr/src/api}/src"
     env_file:
       - ".env"
     depends_on:
       - mongodb
+
+volumes:
+  mongoclient_persistence:
+  mongodb_persistence:

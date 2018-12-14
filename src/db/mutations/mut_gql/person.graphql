@@ -1,0 +1,22 @@
+# Create a person
+createPerson(
+    data: PersonInput
+) : Person
+
+# Update a person (but not documents)
+updatePerson(
+    person_id: ID
+    data: PersonInput
+) : Person
+
+# Add document to a person
+addDocumentToPerson(
+    person_id: ID
+    document: DocumentInput
+) : Person
+
+# Remove a document from person
+removeDocumentFromPerson(
+    person_id: ID
+    document: DocumentInput
+) : Person

@@ -1,0 +1,17 @@
+type User implements Record {
+  # Record
+  id: ID!
+
+  createdAt: Datetime!
+  updatedAt: Datetime!
+
+  createdBy: User
+  updatedBy: User
+
+  # Data
+  person: Person
+  company: Company!
+  email: Email!
+  credentials: [Credential!]!
+  permissions: [Permission!]!
+}

@@ -1,0 +1,84 @@
+enum Permission {
+  ####################################
+  # People management permissions    #
+  ####################################
+  # Retrieve all people in database
+  R_PEOPLE
+  # Manage all people in database
+  W_PEOPLE
+  # Retrieve all people related to company
+  R_COMPANY_PEOPLE
+
+  ####################################
+  # User management permissions      #
+  ####################################
+  # Retrieve all users in database
+  R_USERS
+  # Manage all users in database
+  W_USERS
+  # Manage permissions for all users in database
+  W_USER_PERMISSIONS
+  # Retrieve all users related to company
+  R_COMPANY_USERS
+  # Manage all users related to company
+  W_COMPANY_USERS
+
+  ####################################
+  # Company management permissions   #
+  ####################################
+  # Retrieve all companies in database
+  R_COMPANIES
+  # Manage all companies in database
+  W_COMPANIES
+
+  ####################################
+  # WorkShift management permissions #
+  ####################################
+  # Retrieve all work shifts in database
+  R_WORK_SHIFTS
+  # Start own work shift
+  START_WORK_SHIFT
+  # End own work shift
+  END_WORK_SHIFT
+  # Retrieve all of a company's shifts
+  R_COMPANY_WORK_SHIFTS
+  # End company's work shift
+  END_COMPANY_WORK_SHIFT
+
+  ####################################
+  # Trip management permissions      #
+  ####################################
+  ## Trip general management permissions
+  # Retrieve all trips in database
+  R_TRIPS
+  # Cancel any trip in database
+  CANCEL_TRIP
+
+  ## Trip request management permissions
+  # Request a trip on behalf of company (and cancel it)
+  REQUEST_TRIP
+  # Cancel anyone's previously requested trip
+  CANCEL_REQUESTED_TRIP
+  # Cancel company's requested trip
+  CANCEL_COMPANY_REQUESTED_TRIP
+
+  ## Trip accept management permissions
+  # Accept a trip on behalf of company (or reject it)
+  ACCEPT_TRIP
+  # Cancel any trip
+  CANCEL_ACCEPTED_TRIP
+  # Cancel any trip on behalf of company
+  CANCEL_COMPANY_ACCEPTED_TRIP
+
+  ####################################
+  # Ambulance management permissions #
+  ####################################
+  # Retrieve all ambulances in database
+  R_AMBULANCES
+  # Manage all ambulances in database
+  W_AMBULANCES
+  # Retrieve all of company's ambulances
+  R_COMPANY_AMBULANCES
+  # Manage all of company's ambulances
+  W_COMPANY_AMBULANCES
+}

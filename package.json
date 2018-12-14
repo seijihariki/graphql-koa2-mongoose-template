@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "watch:build": "babel src --out-dir lib --source-maps --watch --copy-files",
+    "watch:build": "babel src --out-dir lib --source-maps --watch --copy-files --delete-dir-on-start",
     "watch:run": "nodemon lib/server.js",
     "watch": "npm run watch:build & (sleep 1 && npm run watch:run)",
     "clean": "rm -rf node_modules/ *.log lib/ dist/",
@@ -17,12 +17,17 @@
     "start": "node dist/server.js"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "apollo-server-koa": "^2.2.3",
     "asynciterator": "^2.0.1",
     "babel-core": "7.0.0-bridge.0",
     "graphql": "^14.0.2",
     "graphql-upload": "^8.0.2",
     "koa2": "^2.0.0-alpha.7",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.3.14",
+    "mongoose-uuid2": "^2.1.0",
+    "uuid": "^3.3.2",
     "winston": "^3.1.0"
   },
   "devDependencies": {
@@ -30,7 +35,6 @@
     "@babel/core": "^7.0.0",
     "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
     "babel-eslint": "^10.0.1",

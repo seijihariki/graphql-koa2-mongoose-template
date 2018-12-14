@@ -1,19 +1,46 @@
+import '@babel/polyfill';
 import Koa from 'koa2';
 import http from 'http';
 import { ApolloServer, gql } from 'apollo-server-koa';
 import db from './db/index';
 import logger from './util/logging';
+import mongoose from './db/model/mongo/db';
 
 logger.info(`Started server with PID ${process.pid}`);
 
 // Retrieve environment values
 const port = process.env.PORT || 3000;
 
+// Connect to mongodb
+
+mongoose
+  .connect(
+    `mongodb://mongodb/${process.env.NODE_ENV}`,
+    {
+      useNewUrlParser: true,
+      user: process.env.MONGO_USER,
+      pass: process.env.MONGO_PASS,
+      authSource: 'admin',
+    },
+  )
+  .catch(() => {
+    logger.error('Failed to connect to database');
+    process.exit(-1);
+  });
+
 // Load schema and resolvers
-const server = new ApolloServer({
-  typeDefs: gql`
+let parsedSchema = '';
+try {
+  parsedSchema = gql`
     ${db.gqlSchema}
-  `,
+  `;
+} catch (e) {
+  logger.info(db.gqlSchema);
+  process.exit(-1);
+}
+
+const server = new ApolloServer({
+  typeDefs: parsedSchema,
   resolvers: db.resolvers,
 });
 

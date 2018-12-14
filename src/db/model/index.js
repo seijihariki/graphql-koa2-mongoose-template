@@ -1,6 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 import logger from '../../util/logging';
+import resolvers from './js';
+
+/**
+ * Setup mongodb models
+ */
+import models from './mongo';
 
 /**
  * Setup graphql types
@@ -15,7 +21,7 @@ gqlTypeFiles.forEach((filename) => {
   logger.info(`Loading GraphQL Type file: ${filename}`);
   try {
     const content = fs.readFileSync(path.join(typesTypeDir, filename));
-    modelSchemaBuilder += content;
+    modelSchemaBuilder += `${content}\n`;
   } catch (e) {
     logger.error(e);
   }
@@ -24,8 +30,12 @@ gqlTypeFiles.forEach((filename) => {
 const modelSchema = modelSchemaBuilder;
 
 /**
- * Setup mongodb models
+ * Setup resolvers
  */
-const mongoModels = null;
+const typeResolvers = resolvers
+  ? {
+    ...resolvers,
+  }
+  : null;
 
-export { modelSchema, mongoModels };
+export { modelSchema, typeResolvers, models };

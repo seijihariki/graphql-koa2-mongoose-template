@@ -1,0 +1,82 @@
+# Document
+enum DocumentType {
+  CPF
+  RG
+  BIRTH_CERTIFICATE
+  COMPANY_INTERNAL_UID
+  CNPJ
+}
+
+input DocumentInput {
+  person: PersonInput
+  company: CompanyInput
+
+  number: String
+  docType: DocumentType
+}
+
+type Document {
+  person: Person
+  company: Company
+
+  number: String
+  docType: DocumentType
+}
+
+# Vehicle Identifier
+enum VehicleIdentifierType {
+  PLATE
+}
+
+input VehicleIdentifierInput {
+  number: String
+  idType: VehicleIdentifierType
+}
+
+type VehicleIdentifier {
+  number: String
+  idType: VehicleIdentifierType
+}
+
+# State
+enum PhysicalResourceState {
+  ACTIVE
+  INACTIVE
+  MAINTENANCE
+  RETIRED
+}
+
+# Credential
+enum CredentialType {
+  PASSWORD
+  API_KEY
+}
+
+interface Credential {
+  credType: CredentialType!
+}
+
+type PasswordCredential implements Credential {
+  credType: CredentialType!
+
+  salt: String
+  hash: String
+}
+
+type ApiKeyCredential implements Credential {
+  credType: CredentialType!
+
+  key: String
+}
+
+# Location
+type Location {
+  time: Datetime
+  lat: Float
+  lng: Float
+}
+
+# Scalars
+scalar Datetime
+scalar Date
+scalar Email

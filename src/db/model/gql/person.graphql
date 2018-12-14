@@ -1,0 +1,23 @@
+input PersonInput {
+  documents: [DocumentInput!]
+  name: String
+  nickname: String
+  birthDate: Date
+}
+
+type Person implements Record {
+  # Record
+  id: ID!
+
+  createdAt: Datetime!
+  updatedAt: Datetime!
+
+  createdBy: User
+  updatedBy: User
+
+  # Data
+  documents: [Document!]!
+  name: String
+  nickname: String
+  birthDate: Date
+}

@@ -1,4 +1,4 @@
-import textMutation from './text';
+import textMutation from './person';
 
 export default {
   ...textMutation,

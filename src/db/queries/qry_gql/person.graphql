@@ -1,0 +1,7 @@
+# List people
+listPeople(
+    searchString: String
+    filter: PersonInput
+    offset: Int = 0
+    limit: Int = 100
+) : [Person!]!

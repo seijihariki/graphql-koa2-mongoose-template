@@ -1,0 +1,10 @@
+# Database record (has some metadata)
+interface Record {
+  id: ID!
+
+  createdAt: Datetime!
+  updatedAt: Datetime!
+
+  createdBy: User
+  updatedBy: User
+}

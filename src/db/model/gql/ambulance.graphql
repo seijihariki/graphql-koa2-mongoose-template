@@ -1,0 +1,16 @@
+type Ambulance implements Record {
+  # Record
+  id: ID!
+
+  createdAt: Datetime!
+  updatedAt: Datetime!
+
+  createdBy: User
+  updatedBy: User
+
+  # Data
+  identifiers: VehicleIdentifier
+  company: Company
+  state: PhysicalResourceState
+  locations: [Location!]
+}
