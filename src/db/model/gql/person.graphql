@@ -1,4 +1,14 @@
 input PersonInput {
+  # Record
+  _id: ID
+
+  createdAt: DatetimeInterval
+  updatedAt: DatetimeInterval
+
+  createdBy: UserInput
+  updatedBy: UserInput
+
+  # Data
   documents: [DocumentInput!]
   name: String
   nickname: String

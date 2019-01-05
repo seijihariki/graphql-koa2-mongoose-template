@@ -1,0 +1,10 @@
+# Get user from ID
+user(id: ID!) : User
+
+# List users
+listUsers(
+    searchString: String
+    filter: UserInput
+    offset: Int = 0
+    limit: Int = 100
+) : [User!]!

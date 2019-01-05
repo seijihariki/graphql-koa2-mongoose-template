@@ -1,4 +1,13 @@
-input AmbulanceInput {
+# Document
+enum DocumentType {
+  CPF
+  RG
+  BIRTH_CERTIFICATE
+  COMPANY_INTERNAL_UID
+  CNPJ
+}
+
+input DocumentInput {
   # Record
   _id: ID
 
@@ -9,12 +18,14 @@ input AmbulanceInput {
   updatedBy: UserInput
 
   # Data
-  identifiers: VehicleIdentifierInput
+  person: PersonInput
   company: CompanyInput
-  state: PhysicalResourceState
+
+  number: String
+  docType: DocumentType
 }
 
-type Ambulance implements Record {
+type Document implements Record {
   # Record
   id: ID!
 
@@ -25,8 +36,9 @@ type Ambulance implements Record {
   updatedBy: User
 
   # Data
-  identifiers: VehicleIdentifier
+  person: Person
   company: Company
-  state: PhysicalResourceState
-  locations: [Location!]
+
+  number: String
+  docType: DocumentType
 }

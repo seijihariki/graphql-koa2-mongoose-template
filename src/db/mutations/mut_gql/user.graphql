@@ -1,0 +1,18 @@
+
+# Create an user
+createUser(
+    data: UserInput
+) : Person
+
+# Update an user (Can't modify credentials)
+updateUser(
+    user_id: ID
+    data: UserInput
+) : Person
+
+# Login as an user (via password or API key)
+login(
+    email: Email!
+    password: String
+    key: String
+) : Session

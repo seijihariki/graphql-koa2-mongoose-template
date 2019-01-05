@@ -1,28 +1,3 @@
-# Document
-enum DocumentType {
-  CPF
-  RG
-  BIRTH_CERTIFICATE
-  COMPANY_INTERNAL_UID
-  CNPJ
-}
-
-input DocumentInput {
-  person: PersonInput
-  company: CompanyInput
-
-  number: String
-  docType: DocumentType
-}
-
-type Document {
-  person: Person
-  company: Company
-
-  number: String
-  docType: DocumentType
-}
-
 # Vehicle Identifier
 enum VehicleIdentifierType {
   PLATE
@@ -52,19 +27,37 @@ enum CredentialType {
   API_KEY
 }
 
+input CredentialInput {
+  _id: ID
+
+  credType: CredentialType
+  user: UserInput
+
+  password: String
+  key: String
+}
+
 interface Credential {
+  id: ID!
+
   credType: CredentialType!
+  user: User!
 }
 
 type PasswordCredential implements Credential {
-  credType: CredentialType!
+  id: ID!
 
-  salt: String
+  credType: CredentialType!
+  user: User!
+
   hash: String
 }
 
 type ApiKeyCredential implements Credential {
+  id: ID!
+
   credType: CredentialType!
+  user: User!
 
   key: String
 }
@@ -72,8 +65,20 @@ type ApiKeyCredential implements Credential {
 # Location
 type Location {
   time: Datetime
+  lat: Float!
+  lng: Float!
+}
+
+input LocationInput {
+  time: Datetime
   lat: Float
   lng: Float
+}
+
+# Interval
+input DatetimeInterval {
+  start: Datetime!
+  end: Datetime # If null, use as normal Datetime
 }
 
 # Scalars

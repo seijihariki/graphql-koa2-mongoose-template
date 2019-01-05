@@ -1,0 +1,47 @@
+input TripInput {
+  # Record
+  _id: ID
+
+  createdAt: DatetimeInterval
+  updatedAt: DatetimeInterval
+
+  createdBy: UserInput
+  updatedBy: UserInput
+
+  # Data
+  shift: ShiftInput
+
+  startLocation: LocationInput
+  pickupLocation: LocationInput
+  targetLocation: LocationInput
+
+  requestTime: DatetimeInterval
+
+  startTime: DatetimeInterval
+  pickupTime: DatetimeInterval
+  targetTime: DatetimeInterval
+}
+
+type Trip implements Record {
+  # Record
+  id: ID!
+
+  createdAt: Datetime!
+  updatedAt: Datetime!
+
+  createdBy: User
+  updatedBy: User
+
+  # Data
+  shift: Shift
+
+  startLocation: Location
+  pickupLocation: Location!
+  targetLocation: Location!
+
+  requestTime: Datetime
+
+  startTime: Datetime
+  pickupTime: Datetime
+  targetTime: Datetime
+}

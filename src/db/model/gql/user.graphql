@@ -1,3 +1,24 @@
+type Session {
+  user: User!
+  token: String!
+}
+
+input UserInput {
+  _id: ID
+
+  createdAt: DatetimeInterval
+  updatedAt: DatetimeInterval
+
+  createdBy: UserInput
+  updatedBy: UserInput
+
+  person: PersonInput
+  company: CompanyInput
+  email: Email
+  credentials: [CredentialInput!]
+  permissions: [Permission!]
+}
+
 type User implements Record {
   # Record
   id: ID!
@@ -9,6 +30,7 @@ type User implements Record {
   updatedBy: User
 
   # Data
+  sessions: [Session!]
   person: Person
   company: Company!
   email: Email!

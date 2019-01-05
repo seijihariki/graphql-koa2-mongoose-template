@@ -1,0 +1,16 @@
+# Create a Company
+createCompany(
+    data: CompanyInput
+) : Company
+
+# Update a Company (but not documents)
+updateCompany(
+    company_id: ID
+    data: CompanyInput
+) : Company
+
+# Add document to a person
+addDocumentToCompany(
+    company_id: ID
+    document: DocumentInput
+) : Company

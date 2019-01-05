@@ -1,5 +1,9 @@
-import textMutation from './person';
+import personMutation from './person';
+import userMutation from './user';
+import companyMutation from './company';
 
 export default {
-  ...textMutation,
+  ...personMutation,
+  ...userMutation,
+  ...companyMutation,
 };

@@ -1,6 +1,5 @@
 import '@babel/polyfill';
 import Koa from 'koa2';
-import http from 'http';
 import { ApolloServer, gql } from 'apollo-server-koa';
 import db from './db/index';
 import logger from './util/logging';
@@ -8,11 +7,7 @@ import mongoose from './db/model/mongo/db';
 
 logger.info(`Started server with PID ${process.pid}`);
 
-// Retrieve environment values
-const port = process.env.PORT || 3000;
-
 // Connect to mongodb
-
 mongoose
   .connect(
     `mongodb://mongodb/${process.env.NODE_ENV}`,
@@ -35,22 +30,33 @@ try {
     ${db.gqlSchema}
   `;
 } catch (e) {
-  logger.info(db.gqlSchema);
+  logger.error(db.gqlSchema);
+  logger.error(e);
   process.exit(-1);
 }
+
+/** Start server */
+// Configuration values
+const port = process.env.PORT || 3000;
+const host = process.env.host || '0.0.0.0';
 
 const server = new ApolloServer({
   typeDefs: parsedSchema,
   resolvers: db.resolvers,
+  subscriptions: '/subscriptions',
 });
 
 // Create Koa2 app
 const app = new Koa();
 server.applyMiddleware({ app });
 
-// Create http server
-const httpServer = http.createServer(app);
+const httpServer = app.listen(port, host, () => {
+  logger.info(`🚀 GraphQL server ready at http://localhost:${port}${server.graphqlPath}`);
+});
+
 server.installSubscriptionHandlers(httpServer);
+
+logger.info(`🚀 Subscriptions server ready at http://localhost:${port}${server.subscriptionsPath}`);
 
 // Handle signals
 const exitOnSignal = (signal) => {
@@ -66,9 +72,3 @@ try {
 } catch (e) {
   logger.warn(`Failed to setup signal handlers: "${e}"`);
 }
-
-// Start listening
-app.listen(port, () => {
-  logger.info(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`);
-  logger.info(`🚀 Subscriptions ready at ws://localhost:${port}${server.graphqlPath}`);
-});

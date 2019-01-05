@@ -1,0 +1,10 @@
+# Get company from ID
+company(id: ID!) : Company
+
+# List companies
+listCompanies(
+    searchString: String
+    filter: CompanyInput
+    offset: Int = 0
+    limit: Int = 100
+) : [Company!]!

@@ -4,9 +4,21 @@ enum CompanyType {
 }
 
 input CompanyInput {
+  # Record
+  _id: ID
+
+  createdAt: DatetimeInterval
+  updatedAt: DatetimeInterval
+
+  createdBy: UserInput
+  updatedBy: UserInput
+
+  # Data
   legalName: String
   tradeName: String
+  documents: [DocumentInput!]
   companyType: CompanyType
+  ambulances: [AmbulanceInput!]
 }
 
 type Company implements Record {
@@ -22,6 +34,7 @@ type Company implements Record {
   # Data
   legalName: String!
   tradeName: String
+  documents: [Document!]!
   companyType: CompanyType
   ambulances: [Ambulance!]
 }

@@ -1,17 +1,17 @@
 import { ApolloError } from 'apollo-server-koa';
 import { models } from '../../model';
 
-const { Person } = models;
+const { Company } = models;
 
 export default {
-  async person(parent, args) {
-    const person = await Person.findById(args.id);
+  async company(parent, args) {
+    const company = await Company.findById(args.id);
 
-    if (!person) throw new ApolloError('Person not found!', 404);
+    if (!company) throw new ApolloError('Company not found!', 404);
 
-    return person;
+    return company;
   },
-  async listPeople(parent, args) {
+  async listCompanies(parent, args) {
     // Build search query
     const query = {};
     if (args.filter) Object.assign(query, args.filter);
@@ -21,11 +21,11 @@ export default {
     }
 
     // Find people
-    const people = await Person.find(query)
+    const companies = await Company.find(query)
       .skip(args.offset)
       .limit(args.limit)
       .exec();
 
-    return people;
+    return companies;
   },
 };

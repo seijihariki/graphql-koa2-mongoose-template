@@ -32,6 +32,7 @@ export default {
 
     // Creates person definition
     const def = {
+      ...data,
       documents,
     };
 
@@ -42,10 +43,14 @@ export default {
     documents.forEach(doc => doc.set({ person }));
 
     // Save all
+    await Promise.all(documents.map(doc => doc.validate()));
+    await person.validate();
+
+    // Save all
     await Promise.all(documents.map(doc => doc.save()));
     await person.save();
 
-    return person;
+    return Person.findById(person.id);
   },
 
   async updatePerson(parent, args) {
@@ -60,6 +65,33 @@ export default {
     person.set(args.data);
     await person.save();
 
-    return person;
+    return Person.findById(person.id);
+  },
+
+  async addDocumentToPerson(parent, args) {
+    // Search for document
+    if (await Document.findOne(args.document)) throw new ApolloError('Document already exists', 409);
+
+    // Get person
+    const person = await Person.findById(args.person_id);
+    if (!person) throw new ApolloError('Person was not found', 404);
+
+    // Add document
+    const document = new Document(args.document);
+    document.person = person;
+    person.documents.push(document.id);
+
+    // Save to db
+    await document.save();
+    await person.save();
+
+    return Person.findById(person.id);
+  },
+  async deleteDocumentFromPerson(parent, args) {
+    // Delete from person
+    await Document.findByIdAndDelete(args.document_id);
+    return Person.findByIdAndUpdate(args.person_id, {
+      $pull: { documents: args.document_id },
+    });
   },
 };

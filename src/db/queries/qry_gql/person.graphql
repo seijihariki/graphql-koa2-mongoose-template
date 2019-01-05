@@ -1,3 +1,6 @@
+# Get person from ID
+person(id: ID!) : Person
+
 # List people
 listPeople(
     searchString: String
