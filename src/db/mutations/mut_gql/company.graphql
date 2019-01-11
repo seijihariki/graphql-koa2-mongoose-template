@@ -9,8 +9,14 @@ updateCompany(
     data: CompanyInput
 ) : Company
 
-# Add document to a person
+# Add document to a company
 addDocumentToCompany(
     company_id: ID
     document: DocumentInput
 ) : Company
+
+# Delete document from a company
+deleteDocumentFromCompany(
+    person_id: ID!
+    document_id: ID!
+) : Person

@@ -1,4 +1,4 @@
-input AmbulanceInput {
+input VehicleInput {
   # Record
   _id: ID
 
@@ -9,12 +9,12 @@ input AmbulanceInput {
   updatedBy: UserInput
 
   # Data
-  identifiers: VehicleIdentifierInput
+  identifier: VehicleIdentifierInput
   company: CompanyInput
   state: PhysicalResourceState
 }
 
-type Ambulance implements Record {
+type Vehicle implements Record {
   # Record
   id: ID!
 
@@ -25,8 +25,8 @@ type Ambulance implements Record {
   updatedBy: User
 
   # Data
-  identifiers: VehicleIdentifier
-  company: Company
-  state: PhysicalResourceState
+  identifier: VehicleIdentifier!
+  company: Company!
+  state: PhysicalResourceState!
   locations: [Location!]
 }

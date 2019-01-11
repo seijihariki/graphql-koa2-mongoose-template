@@ -71,14 +71,14 @@ enum Permission {
   CANCEL_COMPANY_ACCEPTED_TRIP
 
   ####################################
-  # Ambulance management permissions #
+  # Vehicle management permissions #
   ####################################
-  # Retrieve all ambulances in database
-  R_AMBULANCES
-  # Manage all ambulances in database
-  W_AMBULANCES
-  # Retrieve all of company's ambulances
-  R_COMPANY_AMBULANCES
-  # Manage all of company's ambulances
-  W_COMPANY_AMBULANCES
+  # Retrieve all vehicles in database
+  R_VEHICLES
+  # Manage all vehicles in database
+  W_VEHICLES
+  # Retrieve all of company's vehicles
+  R_COMPANY_VEHICLES
+  # Manage all of company's vehicles
+  W_COMPANY_VEHICLES
 }

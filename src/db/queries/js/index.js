@@ -1,9 +1,7 @@
-import personQuery from "./person";
-import companyQuery from "./company";
-import userQuery from "./user";
+import listings from './listings';
+import directs from './directs';
 
 export default {
-  ...personQuery,
-  ...companyQuery,
-  ...userQuery
+  ...listings,
+  ...directs,
 };

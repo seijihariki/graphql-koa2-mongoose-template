@@ -1,0 +1,10 @@
+# Create a Vehicle
+createVehicle(
+    data: VehicleInput
+) : Vehicle!
+
+# Update a Vehicle (but not documents)
+updateVehicle(
+    vehicle_id: ID
+    data: VehicleInput
+) : Vehicle!

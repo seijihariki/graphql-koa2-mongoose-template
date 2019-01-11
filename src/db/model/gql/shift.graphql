@@ -30,9 +30,11 @@ input ShiftInput {
   updatedBy: UserInput
 
   # Data
-  startTime: Datetime
+  startTime: DatetimeInterval
   events: [ShiftEventInput!]
   endTime: DatetimeInterval
+
+  vehicle: VehicleInput
 
   users: [UserInput!]
 }
@@ -52,5 +54,7 @@ type Shift implements Record {
   events: [ShiftEvent!]
   endTime: Datetime
 
-  users: [User!]!
+  vehicle: Vehicle!
+
+  users: [User!]
 }

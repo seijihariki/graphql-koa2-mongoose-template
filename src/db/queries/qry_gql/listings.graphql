@@ -1,0 +1,57 @@
+## All listing queries
+
+# List companies
+listCompanies(
+    searchString: String
+    filter: CompanyInput
+    offset: Int = 0
+    limit: Int = 100
+) : [Company!]!
+
+# List documents
+listDocuments(
+    searchString: String
+    filter: DocumentInput
+    offset: Int = 0
+    limit: Int = 100
+) : [Document!]!
+
+# List people
+listPeople(
+    searchString: String
+    filter: PersonInput
+    offset: Int = 0
+    limit: Int = 100
+) : [Person!]!
+
+# List shifts
+listShifts(
+    searchString: String
+    filter: ShiftInput
+    offset: Int = 0
+    limit: Int = 100
+) : [Shift!]
+
+# List trips
+listTrips(
+    searchString: String
+    filter: TripInput
+    offset: Int = 0
+    limit: Int = 100
+) : [Trip!]!
+
+# List users
+listUsers(
+    searchString: String
+    filter: UserInput
+    offset: Int = 0
+    limit: Int = 100
+) : [User!]!
+
+# List vehicles
+listVehicles(
+    searchString: String
+    filter: VehicleInput
+    offset: Int = 0
+    limit: Int = 100
+) : [Vehicle!]!

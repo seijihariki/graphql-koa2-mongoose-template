@@ -7,9 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "watch:build": "babel src --out-dir lib --source-maps --watch --copy-files --delete-dir-on-start",
-    "watch:run": "nodemon --delay 1.5 lib/server.js",
-    "watch": "concurrently --kill-others \"npm run watch:build\" \"npm run watch:run\"",
+    "watch": "nodemon --exec babel-node --signal SIGINT src/server.js",
     "clean": "rm -rf node_modules/ *.log lib/ dist/",
     "lint": "eslint --ext .js --ignore-path .gitignore",
     "prebuild": "rm -rf dist",

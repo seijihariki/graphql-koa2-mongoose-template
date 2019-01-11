@@ -30,7 +30,7 @@ services:
     build:
       context: .
       target: development
-    command: npm run watch
+    command: yarn run watch
     hostname: api
     ports:
       - "${API_PORT:-3000}:3000"

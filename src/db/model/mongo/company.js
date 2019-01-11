@@ -17,7 +17,7 @@ const CompanySchema = new Schema(
       required: true,
     },
     companyType: String,
-    ambulances: [{ type: Types.UUID, ref: 'Ambulance' }],
+    vehicles: [{ type: Types.UUID, ref: 'Vehicle' }],
   },
   {
     timestamps: {

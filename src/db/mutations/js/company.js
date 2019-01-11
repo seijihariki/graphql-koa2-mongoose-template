@@ -87,4 +87,11 @@ export default {
 
     return Company.findById(company.id);
   },
+  async deleteDocumentFromCompany(parent, args) {
+    // Delete from person
+    await Document.findByIdAndDelete(args.document_id);
+    return Company.findByIdAndUpdate(args.company_id, {
+      $pull: { documents: args.document_id },
+    });
+  },
 };

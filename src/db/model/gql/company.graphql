@@ -1,6 +1,7 @@
 enum CompanyType {
   HOSPITAL
   TRANSPORT
+  REQUESTER
 }
 
 input CompanyInput {
@@ -18,7 +19,7 @@ input CompanyInput {
   tradeName: String
   documents: [DocumentInput!]
   companyType: CompanyType
-  ambulances: [AmbulanceInput!]
+  vehicles: [VehicleInput!]
 }
 
 type Company implements Record {
@@ -36,5 +37,5 @@ type Company implements Record {
   tradeName: String
   documents: [Document!]!
   companyType: CompanyType
-  ambulances: [Ambulance!]
+  vehicles: [Vehicle!]
 }
