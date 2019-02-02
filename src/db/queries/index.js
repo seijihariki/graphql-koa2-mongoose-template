@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import _ from 'lodash';
 import logger from '../../util/logging';
 import resolvers from './js';
 
@@ -30,12 +31,15 @@ const querySchema = gqlQueryTypes.trim()
 type Query {
 ${gqlQueryTypes.replace(/^/m, '  ')}
 }`
-  : '';
+  : `
+type Query {
+  dummy: String
+}`;
 
 /**
  * Setup resolvers
  */
-const queryResolvers = resolvers
+const queryResolvers = !_.isEmpty(resolvers)
   ? {
     Query: {
       ...resolvers,

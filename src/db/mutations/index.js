@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import _ from 'lodash';
 import logger from '../../util/logging';
 import resolvers from './js';
 
@@ -44,12 +45,15 @@ gqlMutationTypeFiles.forEach((filename) => {
 /**
  * Merge graphql schemas
  */
-gqlMutationTypes = gqlMutationTypes.trim()
-  ? `
+
+if (_.isEmpty(gqlMutationTypes.trim())) {
+  gqlMutationTypes = '';
+} else {
+  gqlMutationTypes = `
 type Mutation {
 ${gqlMutationTypes.replace(/^/m, '  ')}
-}`
-  : '';
+}`;
+}
 
 const mutationSchema = `
 ${gqlInputTypes}
@@ -59,7 +63,7 @@ ${gqlMutationTypes}`;
 /**
  * Setup resolvers
  */
-const mutationResolvers = resolvers
+const mutationResolvers = !_.isEmpty(resolvers)
   ? {
     Mutation: {
       ...resolvers,

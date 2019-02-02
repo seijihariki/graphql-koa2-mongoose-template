@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import _ from 'lodash';
 import logger from '../../util/logging';
 import resolvers from './js';
 
@@ -35,7 +36,7 @@ ${gqlSubscriptionTypes.replace(/^/m, '  ')}
 /**
  * Setup resolvers
  */
-const subscriptionResolvers = resolvers
+const subscriptionResolvers = !_.isEmpty(resolvers)
   ? {
     Subscription: {
       ...resolvers,

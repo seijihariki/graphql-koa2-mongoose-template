@@ -25,7 +25,7 @@ mongoose
 // Load schema and resolvers
 let parsedSchema = '';
 try {
-  if (!db.gqlSchema || db.gqlSchema.isEmpty()) {
+  if (!db.gqlSchema.trim()) {
     logger.error('No schema is present');
     process.exit();
   }
