@@ -48,12 +48,8 @@ const server = new ApolloServer({
   typeDefs: parsedSchema,
   resolvers: db.resolvers,
   subscriptions: {
-    onConnect: (connectionParams, webSocket, context) => {
-      console.log(context);
-    },
-    onDisconnect: (webSocket, context) => {
-      console.log(context);
-    },
+    onConnect: () => {},
+    onDisconnect: () => {},
   },
   context: ({ ctx }) => {
     if (ctx) {
