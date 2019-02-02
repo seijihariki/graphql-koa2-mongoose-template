@@ -18,7 +18,7 @@ services:
     hostname: mongoclient
     restart: always
     ports:
-      - "${ADMIN_MONGO_PORT:-3001}:1234"
+      - "${ADMIN_MONGO_PORT:-3333}:1234"
     volumes:
       - "mongoclient_persistence:/data/db"
     environment:
@@ -43,4 +43,6 @@ services:
 
 volumes:
   mongoclient_persistence:
+    name: abeuni-system-mongoclient_persistence
   mongodb_persistence:
+    name: abeuni-system-mongodb_persistence

@@ -1,5 +1,5 @@
 {
-  "name": "graphql-koa2-mongoose",
+  "name": "abeuni-system-api",
   "version": "1.0.0",
   "main": "src/server.js",
   "repository": "git@gitlab.com:seijihariki-templates/graphql-koa2-mongoose.git",
@@ -16,12 +16,15 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "@google/maps": "^0.5.5",
+    "@koa/cors": "2",
     "apollo-server-koa": "^2.2.3",
     "asynciterator": "^2.0.1",
     "babel-core": "7.0.0-bridge.0",
     "bcrypt-nodejs": "^0.0.3",
     "graphql": "^14.0.2",
     "graphql-upload": "^8.0.2",
+    "greenlock-koa": "^2.1.4",
     "jsonwebtoken": "^8.4.0",
     "koa2": "^2.0.0-alpha.7",
     "lodash": "^4.17.11",

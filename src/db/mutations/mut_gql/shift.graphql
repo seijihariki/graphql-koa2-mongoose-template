@@ -1,9 +1,0 @@
-# Starts shift
-startShift(
-  vehicle: VehicleInput!
-) : Shift!
-
-# End shift
-endShift(
-  shift: ShiftInput
-) : Shift!

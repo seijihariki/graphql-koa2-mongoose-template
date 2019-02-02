@@ -1,5 +1,5 @@
 # Our base node image
-FROM node:11.3-alpine AS base
+FROM node:11.7-alpine AS base
 
 ## USER CONFIG
 # Yarn or npm ?
